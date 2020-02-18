@@ -175,6 +175,7 @@ public class UserValidationTest {
         boolean result = UserValidator.validatePasswordRuleThree("Wassi@8080");
         Assert.assertFalse(result);
     }
+
     //Test case for validating password exactly one special characters
     @Test
     public void givenPassowrdWithExactOneSpecialCharacter_WhenProper_ShouldReturnTrue() {
