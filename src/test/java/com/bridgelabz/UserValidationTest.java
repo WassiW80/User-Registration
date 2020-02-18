@@ -81,4 +81,41 @@ public class UserValidationTest {
         boolean result = UserValidator.validateEmailId("abc.@gmail.com");
         Assert.assertFalse(result);
     }
+
+    //Test case for validating phone number
+    @Test
+    public void givenPhoneNumber_WhenProper_ShouldReturnTrue() {
+        boolean result = UserValidator.validatePhoneNumber("91 9022744550");
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void givenPhoneNumber_WhenCountryCodeImproper_ShouldReturnFalse() {
+        boolean result = UserValidator.validatePhoneNumber("9131 9034554743");
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void givenPhoneNumber_WhenCountryCodeNotPresent_ShouldReturnFalse() {
+        boolean result = UserValidator.validatePhoneNumber("9867011087");
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void givenPhoneNumber_WhenPhoneNumberImproper_ShouldReturnFalse() {
+        boolean result = UserValidator.validatePhoneNumber("91 986754815");
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void givenPhoneNumber_WhenFormatImproper_ShouldReturnFalse() {
+        boolean result = UserValidator.validatePhoneNumber("919874502631");
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void givenPhoneNumber_WhenPhoneNumberNotPresent_ShouldReturnFalse() {
+        boolean result= UserValidator.validatePhoneNumber("912 ");
+        Assert.assertFalse(result);
+    }
 }
