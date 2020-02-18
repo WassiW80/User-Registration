@@ -115,7 +115,20 @@ public class UserValidationTest {
 
     @Test
     public void givenPhoneNumber_WhenPhoneNumberNotPresent_ShouldReturnFalse() {
-        boolean result= UserValidator.validatePhoneNumber("912 ");
+        boolean result = UserValidator.validatePhoneNumber("912 ");
+        Assert.assertFalse(result);
+    }
+
+    //Test case for validating password rule 1
+    @Test
+    public void givenPassword_WhenProper_ShouldReturnTrue() {
+        boolean result = UserValidator.validatePasswordRuleOne("HelloJUnit");
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void givenPassword_WhenShort_ShouldReturnFalse() {
+        boolean result = UserValidator.validatePasswordRuleOne("hello");
         Assert.assertFalse(result);
     }
 }
