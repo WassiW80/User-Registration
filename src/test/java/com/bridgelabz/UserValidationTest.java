@@ -5,6 +5,7 @@ import org.junit.Test;
 
 public class UserValidationTest {
 
+    //Test case for validating first name
     @Test
     public void givenFirstName_WhenProper_ShouldReturnTrue() {
         boolean result = UserValidator.validateFirstName("Wassi");
@@ -66,5 +67,18 @@ public class UserValidationTest {
         Assert.assertFalse(result);
     }
 
+    //Test case for validating email address
 
+
+    @Test
+    public void givenEmailId_WhenProper_ShouldReturnTrue() {
+        boolean result = UserValidator.validateEmailId("abc@gmail.com");
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void givenEmailId_WhenNotProper_ShouldReturnFalse() {
+        boolean result = UserValidator.validateEmailId("abc.@gmail.com");
+        Assert.assertFalse(result);
+    }
 }
