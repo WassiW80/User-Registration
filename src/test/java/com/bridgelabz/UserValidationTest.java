@@ -175,4 +175,29 @@ public class UserValidationTest {
         boolean result = UserValidator.validatePasswordRuleThree("Wassi@8080");
         Assert.assertFalse(result);
     }
+    //Test case for validating password exactly one special characters
+    @Test
+    public void givenPassowrdWithExactOneSpecialCharacter_WhenProper_ShouldReturnTrue() {
+        boolean result = UserValidator.validatePasswordRuleFour("Wassi@80");
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void givenPassowrdWithExactOneSpecialCharacter_WhenSpecialCharactersNotPresent_ShouldReturnFalse() {
+        boolean result = UserValidator.validatePasswordRuleFour("Wassi123");
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void givenPassowrdWithExactOneSpecialCharacter_WhenAllLowerCase_ShouldReturnFalse() {
+        boolean result = UserValidator.validatePasswordRuleFour("wassi@80");
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void givenPassowrdWithExactOneSpecialCharacter_WhenNumberNotPresent_ShouldReturnFalse() {
+        boolean result = UserValidator.validatePasswordRuleFour("Wassi@sayed");
+        Assert.assertFalse(result);
+    }
 }
+
