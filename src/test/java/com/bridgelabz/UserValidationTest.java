@@ -119,7 +119,7 @@ public class UserValidationTest {
         Assert.assertFalse(result);
     }
 
-    //Test case for validating password rule 1
+    //Test case for validating password minimum 8 characters
     @Test
     public void givenPassword_WhenProper_ShouldReturnTrue() {
         boolean result = UserValidator.validatePasswordRuleOne("HelloJUnit");
@@ -132,7 +132,7 @@ public class UserValidationTest {
         Assert.assertFalse(result);
     }
 
-    //Test case for validating password rule 2
+    //Test case for validating password at-least one Upper case
     @Test
     public void givenPasswordWithAtLeastOneUpperCase_WhenProper_ShouldReturnTrue() {
         boolean result = UserValidator.validatePasswordRuleTwo("Wassisayed");
@@ -154,6 +154,25 @@ public class UserValidationTest {
     @Test
     public void givenPasswordWithAtLeastOneUpperCase_WhenSpecialCharacterPresent_ShouldReturnFalse() {
         boolean result = UserValidator.validatePasswordRuleTwo("Wassi@#%$%$ggd");
+        Assert.assertFalse(result);
+    }
+
+    //Test case for validating password at-least one digit
+    @Test
+    public void givenPasswordWithAtLeastOneDigit_WhenProper_ShouldReturnTrue() {
+        boolean result = UserValidator.validatePasswordRuleThree("Wassi8080");
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void givenPasswordWithAtLeastOneDigit_WhenDigitNotPresent_ShouldReturnFalse() {
+        boolean result = UserValidator.validatePasswordRuleThree("Wassisayed");
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void givenPasswordWithAtLeastOneDigit_WhenSpecialCharacterPresent_ShouldReturnFalse() {
+        boolean result = UserValidator.validatePasswordRuleThree("Wassi@8080");
         Assert.assertFalse(result);
     }
 }
