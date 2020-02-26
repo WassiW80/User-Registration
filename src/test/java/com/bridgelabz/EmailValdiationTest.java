@@ -52,6 +52,6 @@ public class EmailValdiationTest {
 
     @Test
     public void testEmailValidation() {
-        Assert.assertEquals(result, userValidator.validateEmailId(emailId));
+        Assert.assertEquals(UserValidator.EMAIL_PATTERN, result, userValidator.userDataValidation(emailId,UserValidator.EMAIL_PATTERN));
     }
 }
